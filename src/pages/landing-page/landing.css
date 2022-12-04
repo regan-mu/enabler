@@ -1,0 +1,39 @@
+.enabler__landing {
+    width: 80%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 32px;
+}
+.enabler__nav {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.enabler__login-signup {
+    display: flex;
+    gap: 32px;
+}
+.btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: blueviolet;
+}
+.btn--login {
+    border: 1px solid blueviolet;
+    background-color: #fff;
+    color: blueviolet
+
+}
+.enabler__category-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}

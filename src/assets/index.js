@@ -1,0 +1,9 @@
+export {default as animals} from "./animals.png";
+export {default as shapes} from "./shapes.png";
+export {default as numbers} from "./numbers.png";
+export {default as sounds} from "./sounds.png";
+export {default as fruits} from "./fruits.png";
+export {default as bodyParts} from "./bodyParts.png";
+export {default as alphabets} from "./alphabets.png";
+export {default as color} from "./color.png";
+export {default as enablerLogo} from "./enabler-logo.png";
