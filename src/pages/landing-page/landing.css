@@ -23,14 +23,18 @@
     text-decoration: none;
     color: #fff;
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 20px;
     background-color: blueviolet;
+    transition: all 0.2s ease-in-out;
 }
 .btn--login {
     border: 1px solid blueviolet;
     background-color: #fff;
     color: blueviolet
 
+}
+.btn:hover {
+    scale: 1.03;
 }
 .enabler__category-cards {
     display: grid;
