@@ -7,3 +7,12 @@ export {default as bodyParts} from "./bodyParts.png";
 export {default as alphabets} from "./alphabets.png";
 export {default as color} from "./color.png";
 export {default as enablerLogo} from "./enabler-logo.png";
+export {default as account} from "./account.png";
+export {default as circle} from "./circle.png";
+export {default as rectangle} from "./rectangle.png";
+export {default as triangle} from "./triangle.png";
+export {default as star} from "./star.png";
+export {default as pigeon} from "./pigeon.png";
+export {default as cat} from "./cat.png";
+export {default as puppy} from "./puppy.png";
+export {default as squirrel} from "./squirrel.png"

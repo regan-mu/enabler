@@ -1,0 +1,17 @@
+.enabler__qn-card {
+    width: 200px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(232, 232, 232);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.enabler__qn-card:hover {
+    scale: 1.03
+}
+.enabler__qn-card img {
+    width: 100%;
+    height: 100%;
+}
