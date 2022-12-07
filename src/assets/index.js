@@ -15,4 +15,6 @@ export {default as star} from "./star.png";
 export {default as pigeon} from "./pigeon.png";
 export {default as cat} from "./cat.png";
 export {default as puppy} from "./puppy.png";
-export {default as squirrel} from "./squirrel.png"
+export {default as squirrel} from "./squirrel.png";
+export {default as menu} from "./menu.png";
+export {default as menu_up} from "./menu-up.png";
