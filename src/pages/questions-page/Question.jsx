@@ -6,6 +6,8 @@ import questions from "../../questions";
 import { useState, useEffect } from "react";
 import getRandomItem from "../../utilities/getRandom";
 import shuffleArray from "../../utilities/shuffleArray";
+import uniqid from "uniqid";
+
 const Question = () => {
     const {category} = useParams();
     const {qns, images} = questions[category];
@@ -16,19 +18,25 @@ const Question = () => {
     // Handle Questions (Filter out Qns that have been displayed before)
     const handleQuestions = (e) => {
         // Handle Scoring
-            setScore(prev => {
+        setScore(prev => {
+                if (manageQuestions.length !== 0){
                     return e.target.id === currentQn.ans ? [...prev, "✅"] : [...prev, "❌"];
                 }
-            )
+                else {
+                    return prev;
+                }
+            }
+        )
+        // Remove answered Qn
         setManageQuestions(prev => {
-            return prev.filter(question => question !== currentQn);
+            return manageQuestions.length !== 0 ? prev.filter(question => question !== currentQn): [];
         });
     }
     
     // Update the new question
     useEffect(
         () => {
-            setCurrentQn(getRandomItem(manageQuestions));
+            manageQuestions.length !== 0 ? setCurrentQn(getRandomItem(manageQuestions)): setCurrentQn(null);      
             shuffleArray(images);
         },
         [manageQuestions]
@@ -45,10 +53,10 @@ const Question = () => {
             </div>
             <div className="enabler__question-top">
                 <h2>{category.toUpperCase()}</h2>
-                {manageQuestions.length > 0 ? <h3>{currentQn.qn}</h3>: <h4>Finished! 👍</h4>}
+                {manageQuestions.length !== 0 ? <h3>{currentQn.qn}</h3>: <h4>Finished! 👍</h4>}
             </div>
             <div className="enabler__qn-score">
-                {score.map(sc => <span>{sc}</span>)}
+                {score.map(sc => <span key={uniqid()}>{sc}</span>)}
             </div>
             <div className="enabler__answer-option">
                 {images.map(shape => {return <QuestionCard handleClick={handleQuestions} key={shape.label} id={shape.label} image={shape.image} />})}
