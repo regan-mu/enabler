@@ -2,6 +2,7 @@ import { useState } from "react";
 import app from "../../firebase-config";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Signup = () => {
     let navigate = useNavigate();
@@ -22,10 +23,13 @@ const Signup = () => {
         const authentication = getAuth(app);
         createUserWithEmailAndPassword(authentication, inputs.email, inputs.password).then(
             response => {
-                console.log(response);
                 navigate("/login");
             }
-        );
+        ).catch(error => {
+            if (error.code === "auth/email-already-in-use") {
+                toast.error("Email already exists");
+            }
+        });
 
         setInputs({
             fname: "",
@@ -58,6 +62,7 @@ const Signup = () => {
             <div className="enabler__more">
                 <p>Already have an account? </p><a href="/login">Login</a>
             </div>
+            <ToastContainer />
         </div>
     )
 }

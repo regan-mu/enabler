@@ -3,6 +3,8 @@ import "./login-signup.css";
 import app from "../../firebase-config";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
 
 const Login = () => {
@@ -16,7 +18,7 @@ const Login = () => {
     const handleChange = e => {
         const {name, value} = e.target;
         setInputs(prev => {
-            return {...prev, [name]: value}
+            return {...prev, [name]: value};
         });
     }
 
@@ -34,7 +36,14 @@ const Login = () => {
                     'Email', response.user.email
                 );
             }
-        );
+        ).catch(error => {
+            if (error.code === "auth/wrong-password") {
+                toast.error("Wrong Password");
+            }
+            if (error.code === "auth/user-not-found") {
+                toast.error("User doesn't exist. Confirm email");
+            }
+        });
         setInputs({
             email: "",
             password: ""
@@ -57,6 +66,7 @@ const Login = () => {
             <div className="enabler__more">
                 <p>Don't have an account? </p><a href="/signup">Register</a>
             </div>
+            <ToastContainer />
         </div>
     )
 }
