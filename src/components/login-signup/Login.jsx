@@ -1,11 +1,14 @@
 import { useState } from "react";
 import "./login-signup.css";
-
+import app from "../../firebase-config";
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({
-        username: "",
+        email: "",
         password: ""
     });
 
@@ -20,8 +23,20 @@ const Login = () => {
     // Handle form submission
     const handleSubmit = e => {
         e.preventDefault();
+        const authentication = getAuth(app);
+        signInWithEmailAndPassword(authentication, inputs.email, inputs.password).then(
+            response => {
+                navigate("/");
+                sessionStorage.setItem(
+                    'Auth Token', response._tokenResponse.refreshToken
+                );
+                sessionStorage.setItem(
+                    'Email', response.user.email
+                );
+            }
+        );
         setInputs({
-            username: "",
+            email: "",
             password: ""
         });
 
@@ -30,8 +45,8 @@ const Login = () => {
         <div className="enabler__forms">
             <form className="input-form" onSubmit={handleSubmit}>
                 <div className="enabler__form-group">
-                    <label htmlFor="username">Username</label>
-                    <input onChange={handleChange} required name="username" value={inputs.username} id="username" type="text" placeholder="Your Username" />
+                    <label htmlFor="email">Email</label>
+                    <input onChange={handleChange} required name="email" value={inputs.email} id="email" type="email" placeholder="Email" />
                 </div>
                 <div className="enabler__form-group">
                     <label htmlFor="password">Password</label>

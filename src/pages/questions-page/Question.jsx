@@ -1,6 +1,6 @@
 import "./question.css";
 import { enablerLogo, account } from "../../assets";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { QuestionCard, SideBar } from "../../components";
 import questions from "../../questions";
 import { useState, useEffect } from "react";
@@ -15,6 +15,20 @@ const Question = () => {
     const [currentQn, setCurrentQn] = useState(getRandomItem(manageQuestions));
     const [score, setScore] = useState([]);
     const [restart, setRestart] = useState(false);
+    const Navigate = useNavigate();
+    const email = sessionStorage.getItem("Email");
+
+    // Protect this route
+    // Check for login token
+    useEffect(() => {
+        const authToken = sessionStorage.getItem("Auth Token");
+        if (authToken) {
+            Navigate(`/quizzes/${category}`);
+        } 
+        if(!authToken) {
+            Navigate("/login");
+        }
+    }, []);
 
     // Handle Questions (Filter out Qns that have been displayed before)
     const handleQuestions = (e) => {
@@ -60,7 +74,7 @@ const Question = () => {
                 <a  href="/"><img src={enablerLogo} alt="Enabler logo"/></a>
                 <div className="enabler__username">
                     <img src={account} alt="Account"/>
-                    <h4>John Doe</h4>
+                    <h4>{email}</h4>
                 </div>
             </div>
             <div className="enabler__question-main">

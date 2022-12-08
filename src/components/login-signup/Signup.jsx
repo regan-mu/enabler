@@ -1,10 +1,14 @@
 import { useState } from "react";
+import app from "../../firebase-config";
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+    let navigate = useNavigate();
     const [inputs, setInputs] = useState({
         fname: "",
         lname: "",
-        username: "",
+        email: "",
         password: ""
     });
     const handleChange = (e) => {
@@ -13,9 +17,26 @@ const Signup = () => {
             return {...prev, [name]: value}
         });
     }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const authentication = getAuth(app);
+        createUserWithEmailAndPassword(authentication, inputs.email, inputs.password).then(
+            response => {
+                console.log(response);
+                navigate("/login");
+            }
+        );
+
+        setInputs({
+            fname: "",
+            lname: "",
+            email: "",
+            password: ""
+        });
+    }
     return (
         <div className="enabler__forms">
-            <form className="input-form">
+            <form className="input-form" onSubmit={handleSubmit}>
                 <div className="enabler__form-group">
                     <label htmlFor="fname">First Name</label>
                     <input required onChange={handleChange} value={inputs.fname} name="fname"  id="fname" type="text" placeholder="First Name" />
@@ -25,8 +46,8 @@ const Signup = () => {
                     <input required onChange={handleChange} value={inputs.lname}  name="lname"  id="lname" type="text" placeholder="Last Name" />
                 </div>
                 <div className="enabler__form-group">
-                    <label htmlFor="username">Username</label>
-                    <input required onChange={handleChange} value={inputs.username}  name="username"  id="username" type="text" placeholder="Your Username" />
+                    <label htmlFor="email">Email</label>
+                    <input required onChange={handleChange} value={inputs.email}  name="email"  id="email" type="email" placeholder="Your Email" />
                 </div>
                 <div className="enabler__form-group">
                     <label htmlFor="password">Password</label>

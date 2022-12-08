@@ -26,3 +26,15 @@
 .btn:hover {
     scale: 1.03;
 }
+.logout {
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid blueviolet;
+    border-radius: 20px;
+    color: blueviolet;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.logout:hover {
+    scale: 1.03;
+}
