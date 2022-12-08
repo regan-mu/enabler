@@ -24,13 +24,21 @@
 .enabler__sidebar h4 {
     font-weight: 300;
 }
+.enabler__more-games_container {
+    width: 100%;
+    position: relative;
+}
 .enabler__more-games {
+    position: absolute;
+    left: 0;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     height: auto;
     gap: 8px;
+    background-color: aliceblue;
 }
 .enabler__more-games a {
     text-decoration: none;

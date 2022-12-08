@@ -23,7 +23,7 @@ const categories = [
     },
     {
         image: bodyParts,
-        name: "Body parts"
+        name: "bodyParts"
     },
     {
         image: alphabets,

@@ -10,6 +10,10 @@ const SideBar = ({category, handleRestart}) => {
     const handleMenu = () => {
         setShowMenu(prev =>  !prev)
     }
+    const handleLinkClick = () => {
+        handleRestart();
+        setShowMenu(false);
+    }
     return (
         <div className="enabler__sidebar">
             <h2>{category.toUpperCase()}</h2>
@@ -17,11 +21,13 @@ const SideBar = ({category, handleRestart}) => {
                 <h4>More Games</h4>
                 <img src={showMenu ? menu_up : menu} alt="" />
             </div>
-            {showMenu ? 
-                <div className="enabler__more-games">
-                    {categories.map(cat => <Link onClick={handleRestart} key={uniqid()} to={`/quizzes/${cat.name.toLowerCase()}`} >{cat.name}</Link>)}
-                </div> : null
-            }
+            <div className="enabler__more-games_container">
+                {showMenu ? 
+                    <div className="enabler__more-games">
+                        {categories.map(cat => <Link onClick={handleLinkClick} key={uniqid()} to={`/quizzes/${cat.name.toLowerCase()}`} >{cat.name}</Link>)}
+                    </div> : null
+                }
+            </div>
             <div className="enabler__restart">
                 <button onClick={handleRestart}>Restart Game</button>
             </div>
