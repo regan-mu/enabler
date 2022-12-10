@@ -29,3 +29,4 @@ export {default as hands} from "./hands.png";
 export {default as kneel} from "./kneel.png";
 export {default as feet} from "./feet.png";
 export {default as arm} from "./arm.png";
+export {default as music} from "./music.mp3";
