@@ -14,10 +14,6 @@ const categories = [
         name: "Numbers"
     },
     {
-        image: sounds,
-        name: "Sounds"
-    },
-    {
         image: fruits,
         name: "Fruits"
     },

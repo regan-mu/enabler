@@ -1,4 +1,3 @@
-import {circle} from "../../assets";
 import "./questionCard.css";
 const QuestionCard = ({handleClick, image, id}) => {
     return (

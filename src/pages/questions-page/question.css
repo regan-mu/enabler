@@ -15,9 +15,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #d48d69;
+    color: blueviolet;
 }
 .enabler__question-main {
+    position: relative;
     width: 100%;
     height: auto;
     display: grid;
@@ -30,10 +31,47 @@
     gap: 8px;
     height: 100%;
     align-items: center;
+    font-size: 0.8rem;
+    font-weight: 300;
 }
 .enabler__question-game {
+    position: relative;
     border: 0.1px solid rgb(194, 194, 194);
     padding: 16px 0;
+}
+.enabler__score-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.enabler__score-popup img {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+}
+.enabler__score-popup-inner {
+    width: 300px;
+    height: 300px;
+    background-color: aliceblue;
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.enabler__score-popup h3 {
+    color:rgb(104, 104, 104);
+    font-weight: 400;
+}
+.enabler__score-popup h2 {
+    color: blueviolet;
 }
 .enabler__question-top {
     width: 100%;
