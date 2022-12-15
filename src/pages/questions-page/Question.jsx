@@ -34,8 +34,12 @@ const Question = () => {
     useEffect(() => {
         const authToken = sessionStorage.getItem("Auth Token");
         if (authToken) {
-            Navigate(`/quizzes/${category}`);
-            playMusic();
+            if (category) {
+                Navigate(`/quizzes/${category}`);
+                playMusic();
+            } else {
+                Navigate("/");
+            }
         } 
         if(!authToken) {
             Navigate("/login");
